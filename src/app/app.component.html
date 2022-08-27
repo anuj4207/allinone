@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  </head>
+
+  <body>
+
+    <div class="container-fluid" id="header">
+      <div class="row">
+        <div class="col-8">
+          <h2>All In One</h2>
+        </div>
+        <div class="col-1">
+          <a href="/about" id="links">About</a>
+        </div>
+        <div class="col-1">
+          <a href="/login" id="links">Login</a>
+        </div>
+        <div class="col-1">
+          <a href="/register" id="links">Register</a>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container" id="section">
+
+      <div class="row">
+
+        <div class="col-5">
+          <div class="container-fluid" id="news">
+            <div class="row">
+              <div class="col">
+                <h2>News</h2>
+              </div>
+            </div>
+            <div *ngFor="let newsData of news_data">
+              <div class="row" >
+                <div class="col">
+                  <ul>
+                    <li>{{newsData.title}}</li>
+                      <a href="{{newsData.link}}">{{newsData.source.title}}</a>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="container-fluid">
+
+            <div id="events">
+              <div class="row">
+                <div class="col">
+                  <h2>Sports</h2>
+                </div>
+              </div>
+              <div *ngFor="let match of sports_data,let i=index"class="dropdown-item">
+                <div class="row">
+                <div class="col">
+                  <div *ngIf="match.seriesAdWrapper && i<5">
+                    <ul id="list">
+                      <li>{{match.seriesAdWrapper.seriesName}}</li>
+                      <p [ngStyle]="{'padding-left':'10px','color':'blue'}">{{match.seriesAdWrapper.matches[0].matchInfo.status}}</p>
+                    </ul>
+                  </div>
+                </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div id="history">
+              <div class="row">
+                <div class="col">
+                  <h3>Today in History</h3>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <h5>{{today_history_data}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="container-fluid" id="finance">
+            <div class="row">
+              <div class="col">
+                <h2>Finance</h2>
+              </div>
+            </div>
+            <div *ngFor="let fi of finance_data,let ii=index">
+              <div class="row">
+                <div class="col">
+                  <ul>
+                    <li>{{symbol[ii]}} {{fi}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container-fluid" id="footer">
+      <div class="row">
+        <div class="col-8">
+          <h4>Copyright 2022.</h4>
+        </div>
+        <div class="col-4">
+          <h6>Follow on</h6>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
